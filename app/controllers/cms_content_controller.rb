@@ -35,7 +35,9 @@ protected
     @cms_site = if ComfortableMexicanSofa.config.enable_multiple_sites
       Cms::Site.find_by_hostname(request.host.downcase)
     else
-      Cms::Site.first
+      # Cms::Site.first
+      hostname = ComfortableMexicanSofa.config.override_host || request.host.downcase
+      Cms::Site.find_by_hostname!(hostname)
     end
     render :text => 'Site Not Found', :status => 404 if !@cms_site
   end

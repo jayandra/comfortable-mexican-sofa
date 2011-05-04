@@ -13,7 +13,7 @@ class CmsAdmin::BaseController < ActionController::Base
 protected
   
   def load_admin_cms_site
-    hostname = request.host.downcase
+    hostname = ComfortableMexicanSofa.config.override_host || request.host.downcase
     @cms_site = Cms::Site.find_by_hostname!(hostname)
     
   rescue ActiveRecord::RecordNotFound
