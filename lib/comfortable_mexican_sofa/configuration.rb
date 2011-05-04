@@ -33,6 +33,8 @@ class ComfortableMexicanSofa::Configuration
   # Path where fixtures can be located.
   attr_accessor :fixtures_path
   
+  attr_accessor :override_host
+  
   # Configuration defaults
   def initialize
     @cms_title              = 'ComfortableMexicanSofa MicroCMS'
@@ -46,6 +48,7 @@ class ComfortableMexicanSofa::Configuration
     @upload_file_options    = {}
     @enable_fixtures        = false
     @fixtures_path          = File.expand_path('db/cms_fixtures', Rails.root)
+    @override_host        = nil
   end
   
 end
